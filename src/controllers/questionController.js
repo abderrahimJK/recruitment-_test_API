@@ -32,6 +32,7 @@ const createQuestion = async  (req, res) => {
         type: body.type
     }
 
+
     try{
 
         const createdQuestion = await questionService.createQuestion(question);

@@ -1,8 +1,12 @@
-const { Question, Category } = require('../../models')
+const { 
+    Question,
+    Category,
+    Answer
+} = require('../../models')
 
 const getAllQuestions  = () => {
     try{
-        const questions = Question.findAll({include:[ {model:Category, as: 'categories'}]});
+        const questions = Question.findAll({include:Category});
         return questions;
     } catch (error) {
         throw { status: 500, message: error };
