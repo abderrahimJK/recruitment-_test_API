@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-   
+      Category.belongsTo(models.Question)
     }
   }
   Category.init({
@@ -21,9 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName:'category',
     modelName: 'Category',
   });
-
-  Category.associate = models => {
-    Category.belongsTo(models.Question)
-  }
   return Category;
 };

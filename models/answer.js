@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-    
+      Answer.belongsTo(models.Question, {
+        foreignKey: 'question_id'
+      })
       
     }//attributes that should not be returned to the user
     /* toJSON(){

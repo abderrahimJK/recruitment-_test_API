@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // defining association  
-      
+      Question.hasMany(models.Category)
+      Question.hasMany(models.Answer, {
+        foreignKey: 'question_id',
+      })
     }
     //attributes that should not be returned to the user
     toJSON(){
@@ -38,11 +41,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName:"questions",
     modelName: 'Question',
   });
-
-  Question.associate = models => {
-    Question.hasMany(models.Category, {
-      foreignKey: 'question_id'
-    })
-  }
   return Question;
 };
