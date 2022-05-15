@@ -1,4 +1,4 @@
-const question = require('../utils/question')
+const question = require('../utils/questionUtil')
 
 
 const getAllQuestions = () => {

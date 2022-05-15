@@ -18,7 +18,8 @@ const createQuestion = async  (req, res) => {
 
     const { body } = req
 
-    if( !body.content || !body.tags || !body.type || !body.category){
+    //fields are required
+    if( !body.content || !body.type || !body.category){
         res.status(400)
             .send({status: 'FAILED', data : {
                 error: "One of the following keys is missing or is empty in request body: 'title', 'tags', 'type'"
@@ -32,8 +33,6 @@ const createQuestion = async  (req, res) => {
         type: body.type,
         categoryId: body.category
     }
-
-
 
     try{
 
