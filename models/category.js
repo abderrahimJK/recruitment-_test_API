@@ -11,14 +11,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Category.belongsToMany(models.Question, { through: 'Question_category' , timestamps: false })
+
+      Category.hasMany(models.Question, {
+        foreignKey: 'categoryId',
+        onDelete: 'CASCADE',
+      })
+     
     }
   }
   Category.init({
-    category: DataTypes.STRING
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
+    category: {
+      type:DataTypes.STRING(32),
+      allowNull: false
+    }
   }, {
     sequelize,
-    tableName:'category',
+    tableName:'Categories',
     modelName: 'Category',
   });
   return Category;

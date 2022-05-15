@@ -10,12 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Tag.belongsToMany(models.Question, { through: 'Question_tags' , timestamps: false })
+      
     }
   }
   Tag.init({
-    name: DataTypes.STRING
-  }, {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
+    type: {
+      type:DataTypes.STRING(32),
+      allowNull: false
+    }
+  }, 
+  {
     sequelize,
     timestamps: false,
     tableName: 'tags',

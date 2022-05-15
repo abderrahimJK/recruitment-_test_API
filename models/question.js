@@ -11,11 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // defining association  
-     
-      Question.belongsToMany(models.Category, { through: 'Question_category', timestamps: false })
-      Question.belongsToMany(models.Tag, { through: 'Question_tags', timestamps: false })
-      Question.hasMany(models.Answer, {
-        foreignKey: 'question_id',
+      Question.belongsTo(models.Category, {
+        foreignKey: 'categoryId',
       })
     }
     //attributes that should not be returned to the user
@@ -24,6 +21,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Question.init({
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
     content: {
       type:DataTypes.STRING(60),
       allowNull: false
