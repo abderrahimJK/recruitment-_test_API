@@ -11,7 +11,7 @@ const getAllQuestions = () => {
     }
 }
 
-const createQuestion = (newQuestion)=> {
+const createQuestion = (newQuestion )=> {
     try{
         //adding
         const createdQuestion = question.createNewQuestion(newQuestion);

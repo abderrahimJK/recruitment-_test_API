@@ -13,10 +13,11 @@ const getAllQuestions  = () => {
     }
 }
 
-const createNewQuestion = (question) =>{
+const createNewQuestion = (question) => {
 
     try{
         const createdQuestion = Question.create(question);
+    
         return createdQuestion;
     }catch(error){
         throw { status : 500, message : error ?.message || error};
