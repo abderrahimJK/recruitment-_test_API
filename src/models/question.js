@@ -17,9 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       //  Question<->Tags
-      Question.belongsToMany(models.Tag, { 
-        through: 'Question_tags', timestamps: false 
-      })
+      Question.Tag = Question.belongsToMany(models.Tag,{
+        as: 'question_tag',
+        through: models.Question_tag, 
+        foreignKey: 'question_id'
+      }) 
 
     }
     //attributes that should not be returned to the user
@@ -43,11 +45,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     
+    
 
   }, {
     sequelize,
     tableName:"questions",
     modelName: 'Question',
   });
+  
   return Question;
 };

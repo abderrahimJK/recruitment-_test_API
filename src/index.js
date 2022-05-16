@@ -15,4 +15,4 @@ app.listen(PORT,async  () => {
   console.log(`API is listening on port ${PORT}`);
   await sequelize.sync({force: true});
   console.log("DataBase synced");
-});4
+});

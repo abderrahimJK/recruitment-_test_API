@@ -12,8 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
 
       //Tag<->Questions
-      Tag.belongsToMany(models.Question, { 
-        through: 'Question_tags' , timestamps: false 
+      Tag.belongsToMany(models.Question, {
+        as: 'question_tag',
+        through: models.Question_tag, 
+        foreignKey: 'tag_id'
       })
     }
   }
